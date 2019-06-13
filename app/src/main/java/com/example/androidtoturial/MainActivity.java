@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     Button btn_save, btn_Show;
     MyDatabase myDatabase;
     ImageView timePicker, datePicker;
-    TextView txtTime, txtDate;
+    TextView txtTime, txtDate,txtToolbarTitle;
     AlarmManager alarmManager;
     AppCompatCheckBox checkBox;
     private boolean isPm=false;
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         getCurrentDateAndTime();
         callBroadcast();
         setupViews();
+        txtToolbarTitle.setText(getMyIntent());
 
         myDatabase = new MyDatabase(getApplicationContext());
 
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
     private void setupViews() {
+        txtToolbarTitle=findViewById(R.id.txt_toolbar_toolbarTitle);
         alarmManager =(AlarmManager)getSystemService(Context.ALARM_SERVICE);
         edt_Name = findViewById(R.id.edt_main_userName);
         edt_PassWord = findViewById(R.id.edt_main_password);
@@ -197,6 +199,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         public void onReceive(Context context, Intent intent) {
             Toast.makeText(context, "Network State is Changed", Toast.LENGTH_SHORT).show();
         }
+    }
+    private String getMyIntent()
+    {
+        return getIntent().getExtras().getString("sqlLite_Title");
     }
 
     @Override

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Android Toturial</string>
+    <string name="username">عنوان یادداشت</string>
+    <string name="password">توضیحات</string>
+    <string name="button">ذخیره یادداشت</string>
+    <string name="image">TDO</string>
+</resources>
